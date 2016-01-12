@@ -1,0 +1,48 @@
+*{
+  font-family: 'Ubuntu'!important;
+}
+body{
+  background:linear-gradient(135deg,#04859D,#1437AD 60%,#1437AD);
+}
+.wrapper{
+  max-width: 1280px;
+  width:80%;
+  margin: 0 auto;
+}
+nav ul.nav{
+  display: flex;
+  justify-content: center;
+}
+header{
+  position: absolute;
+  display: flex;
+  left:0;
+  right:0;
+  flex-direction: column;
+}
+#infoBar{
+  height:40px;
+  background: rgba(0, 0, 0, .8);
+  border-bottom:2px solid #332f2c;
+}
+nav{
+  background: rgba(0, 0, 0, .5);
+  display: flex;
+}
+nav .wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:10px 0px;
+}
+
+nav ul li a{
+  font-size: 18px;
+  color: #f9f9f9;
+}
+#hero{
+  background: url('../images/office.jpg');
+  background-size:cover;
+  background-repeat: no-repeat;
+  height:100vh;
+}
