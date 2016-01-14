@@ -2,12 +2,15 @@
   font-family: 'Ubuntu'!important;
 }
 body{
-  background:linear-gradient(135deg,#04859D,#1437AD 60%,#1437AD);
+  /*background:linear-gradient(135deg,#04859D,#1437AD 60%,#1437AD);*/
 }
 .wrapper{
   max-width: 1280px;
   width:80%;
   margin: 0 auto;
+}
+#logoContainer{
+  flex:1;
 }
 nav ul.nav{
   display: flex;
@@ -28,17 +31,98 @@ header{
 nav{
   background: rgba(0, 0, 0, .5);
   display: flex;
+  height:12vh;
 }
 nav .wrapper{
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding:10px 0px;
+  position: relative;
 }
-
-nav ul li a{
+ul.navigation{
+  list-style: none;
+  display: flex;
+  flex:1;
+  justify-content: space-between;
+  height:100%;
+  margin-top: 10px;
+}
+nav ul.navigation li.top-level a.top{
   font-size: 18px;
+  color: #e9e9e9;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  height: 12vh;
+  display: flex;
+  flex:1;
+  /*font-weight: bold;*/
+  text-transform: uppercase;
+}
+nav ul.navigation li.top-level a.top:hover{
+  background: rgba(0, 0, 0, .25);
+  text-decoration: none;
   color: #f9f9f9;
+  transition: color .5s;
+  transition: background .5s;
+  border-bottom:3px solid #ff7e00;
+}
+.active{
+  background: rgba(0, 0, 0, .25);
+  text-decoration: none;
+  color: #FF7E00;
+  /*transition: all .5s;*/
+  border-bottom:3px solid #ff7e00;
+}
+nav ul.navigation li.top-level{
+  height: 12vh;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  display: flex;
+  vertical-align: middle;
+  flex: 1;
+  position: relative;
+}
+.dropdown-icon{
+  padding-left:10px;
+}
+ul.dropdown{
+  position: absolute;
+  bottom:-220px;
+  left:0;
+  background: rgba(0, 0, 0, .8);
+  padding-left:0;
+  flex:2;
+  width:300px;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  align-items: flex-start;
+  padding-left:30px;
+  padding-top:20px;
+  z-index:1;
+  display: block;
+}
+ul.dropdown:hover{
+  display: block!important;
+}
+ul.dropdown li{
+  height: 40px;
+}
+ul.dropdown li a{
+  font-size:14px!important;
+  text-decoration: none;
+  color: #f9f9f9;
+  height: 40px;
+}
+ul.dropdown li a:hover{
+  color: #FF7E00;
+  border:none!important;
+  text-decoration: none!important;
+  height:40px;
+
 }
 #hero{
   background: url('../images/office.jpg');
