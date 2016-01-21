@@ -17,7 +17,10 @@
       <div id="infoBar">
         <div class="wrapper">
           <div id="social">
-
+            <a href="#"><span class="ion-social-facebook"></span></a>
+            <a href="#"><span class="ion-social-twitter"></span></a>
+            <a href="#"><span class="ion-social-googleplus"></span></a>
+            <a href="#"><span class="ion-social-github"></span></a>
           </div>
           <div id="contactInfo">
 
@@ -37,6 +40,7 @@
                 <li><a href="#">Custom Software Development</a></li>
                 <li><a href="#">CMS Development</a></li>
                 <li><a href="#">E-Commerce Development </a></li>
+                <li><a href="#">Search Engine Optimization</a></li>
               </ul>
             </li>
             <li class="top-level"><a class="top" href="#">Work</a></li>
