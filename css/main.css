@@ -1,13 +1,25 @@
 *{
   font-family: 'Ubuntu'!important;
 }
-body{
-  /*background:linear-gradient(135deg,#04859D,#1437AD 60%,#1437AD);*/
-}
 .wrapper{
   max-width: 1280px;
   width:80%;
   margin: 0 auto;
+}
+h2{
+  font-size: 36px;
+}
+p.enlarge{
+  font-size:20px;
+}
+section{
+  padding:25px 0px;
+}
+section h3{
+  border-bottom: 2px solid #bfbfbf;
+  padding-bottom:15px;
+  font-size:32px;
+  margin-bottom: 25px;
 }
 #logoContainer{
   flex:1;
@@ -17,40 +29,32 @@ nav ul.nav{
   justify-content: center;
 }
 header{
-  position: absolute;
   display: flex;
   left:0;
   right:0;
   flex-direction: column;
 }
-#social{
+.social{
   align-items: center;
   display: flex;
   height:40px;
   justify-content: flex-end;
+  flex:1;
 }
-#social span{
-  color: #ff7e00;
-  font-size:24px;
+.social span{
+  color: #333;
+  font-size:18px;
 }
-#social a{
+.social a{
   padding:0px 10px;
 }
-#social span:hover{
-  color: #FEAD00;
-  text-shadow: 1px 1px 3px #000;
+.social span:hover{
+  color: #FBA81A;
   transition: all .5s;
 
 }
-#infoBar{
-  height:40px;
-  background: rgba(0, 0, 0, .8);
-  border-bottom:2px solid #332f2c;
-}
 nav{
-  background: rgba(0, 0, 0, .5);
   display: flex;
-  height:12vh;
 }
 nav .wrapper{
   display: flex;
@@ -68,24 +72,21 @@ ul.navigation{
   margin-top: 10px;
 }
 nav ul.navigation li.top-level a.top{
-  font-size: 16px;
-  font-weight: 900;
-  color: #e9e9e9;
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
   align-self: center;
   align-items: center;
   justify-content: center;
-  height: 12vh;
-  display: flex;
-  flex:1;
-  /*font-weight: bold;*/
   text-transform: uppercase;
 }
 nav ul.navigation li.top-level a.top:hover{
-  background: rgba(0, 0, 0, .25);
   text-decoration: none;
-  color: #f9f9f9;
+  color: #222222;
   transition: color .5s;
   transition: background .5s;
+  position: relative;
+  top: 2px;
   border-bottom:3px solid #ff7e00;
 }
 .active{
@@ -96,7 +97,6 @@ nav ul.navigation li.top-level a.top:hover{
   border-bottom:3px solid #ff7e00;
 }
 nav ul.navigation li.top-level{
-  height: 12vh;
   align-items: center;
   align-self: center;
   justify-content: center;
@@ -145,53 +145,172 @@ ul.dropdown li a:hover{
 
 }
 #hero{
-  background: url('../images/office.jpg');
-  background-size:cover;
-  background-repeat: no-repeat;
-  height:80vh;
-  box-shadow: 0 2px 2px -2px gray;
+ align-items: center;
+ display: flex;
+ justify-content: center;
+ padding-top:40px;
+ margin-top:20px;
 }
-#hero .wrapper{
-  display: flex;
+#hero .headshot{
   align-items: center;
-  flex-direction: column;
-  height:800px;
+  display: flex;
   justify-content: center;
-  align-self: center;
+  flex-direction: column;
 }
-#hero .wrapper h1{
-  color: #FF7E00;
-  font-size:64px;
-  font-weight: 900;
-  text-shadow: 2px 2px 8px #262626;
+#hero .headshot img{
+  border-radius: 100%;
+  flex: 1;
+  width: 550px;
+  align-self: center;
+  max-width: 280px;
+  height: auto;
+}
+#hero p{
+  font-size: 48px;
+  line-height: 54px;
+  margin-top: 20px;
   text-align: center;
 }
-#hero .wrapper h1 span.header-small{
-  font-size:30px;
-  color: #f9f9f9;
-}
-#hero .btn{
-  background: #FEAD00;
-  border:0;
-  color: #f9f9f9;
-  font-size:24px;
+#hero p.hello{
+  font-size:170px;
   font-weight: 900;
+  letter-spacing: -10px;
+  margin-top:-100px;
+  text-shadow: 9px -9px 0 #ffffff;
+  line-height: 170px;
+}
+/* About Me Section */
+section#about{
+  max-width: 60%;
+  margin: 0 auto;
+}
+section#about *{
+  text-align:center;
+}
+section#about p{
+  font-size:18px;
+}
+/* Recent Posts Section */
+#recentPosts{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+}
+#recentPosts .singlePost{
+  display: flex;
+  flex-direction: row;
+  box-shadow: 2px 2px 0px #bfbfbf;
+  margin-bottom: 40px;
+}
+#recentPosts .singlePost:nth-child(odd){
+  flex-direction: row-reverse;
+}
+#recentPosts .featured-image{
+  flex:1;
+}
+#recentPosts .featured-image img{
+  max-width: 100%;
+}
+#recentPosts .post{
+  flex:2;
+  display: flex;
+  flex-direction: column;
+  padding:25px;
+  background: #f4f4f4;
+}
+#recentPosts .post h1{
   text-transform: uppercase;
-  margin-top:20px;
-  padding:10px 25px;
-  transition: background .5s;
-  text-shadow: 1px 1px 2px #262626;
+  font-weight: 900;
 }
-#hero .btn:hover{
+#recentPosts span.date{
+  font-size:12px;
+  margin-bottom: 20px;
+}
+#recentPosts span.singleCategory{
   background: #ff7e00;
-  transition: background .5s;
+  padding:5px 10px;
+  border-radius: 3px;
+  margin:0px 10px;
+  color: #fff;
+}
+#recentPosts span.singleCategory:hover{
+  background: #FBA81A;
+  transition: all .5s;
+}
+#recentPosts span.singleCategory:first-child{
+  margin-left:0!important;
+}
+#recentPosts p.postExcerpt a.read-more{
+  color: #ff7e00;
+  padding-left:10px;
+  text-decoration: none;
+  transition: all .5s;
+  font-weight: 900;
+}
+#recentPosts p.postExcerpt a.read-more:hover{
+  color: #fBA81a;
+  font-weight: 900;
+}
+#recentPosts p.postExcerpt a.read-more:hover i{
+  padding-left:10px;
+  color: #fBA81a;
+  transition: all .5s;
 
 }
-/**
- * What We Do
- */
+#recentPosts p.postExcerpt a.read-more i{
+  color: #ff7e00;
+  font-size:10px;
+  position: relative;
+  bottom: 1px;
+  padding-left:5px;
+}
 
- #whatWeDo{
-   height:300px;
-   color: #404040;
- }
+#subscribe{
+  display: flex;
+  justify-content: center;
+}
+#subscribe #mc_embed_signup{
+  background:#fff;
+  clear:left;
+  width: 40%;
+}
+#mc_embed_signup .button{
+  background:#ff7e00;
+  font-weight: 700;
+}
+#mc_embed_signup .button:hover{
+  background: #FBA81A;
+}
+#mc_embed_signup_scroll{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#mc_embed_signup input.email{
+  width: auto;
+}
+
+/**
+ * Footer
+ */
+footer{
+  padding:20px 0px;
+}
+footer .wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex:1;
+}
+footer p{
+  margin:0;
+  font-size: 12px;
+}
+footer .copyright{
+  display: flex;
+  align-items: center;
+}
+footer .social a span{
+  font-size:14px;
+}

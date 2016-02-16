@@ -14,6 +14,16 @@ $(document).ready(function($){
     $(this).siblings('a.dropdown-toggle').toggleClass('active');
   });
 
+  // Add Typed.js to Header
+  $(function(){
+      $(".typed").typed({
+        strings: ["a <b>developer.</b>", "a <b>consultant.</b>", "an <b>entrepreneur.</b>"],
+        typeSpeed: 100,
+        contentType: 'html',
+        loop: true,
+      });
+  });
+
 
 
 
