@@ -1174,7 +1174,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #e71d1d;
+  color: #FF9F00;
   text-decoration: underline;
 }
 a:focus {
@@ -4008,7 +4008,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #e71d1d;
+  color: #FF9F00;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -5068,7 +5068,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #ff7e00;
-  border-color: #ec4444;
+  border-color: #FF9F00;
 }
 .navbar-default .navbar-brand {
   color: #777777;
@@ -5093,7 +5093,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #ffffff;
-  background-color: #ed5454;
+  background-color: #FF9F00;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -5113,12 +5113,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #ec4444;
+  border-color: #FF9F00;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #ed5454;
+  background-color: #FF9F00;
   color: #ffffff;
 }
 @media (max-width: 767px) {
@@ -5134,7 +5134,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #ffffff;
-    background-color: #ed5454;
+    background-color: #FF9F00;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -5319,7 +5319,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > li > a:focus,
 .pagination > li > span:focus {
   z-index: 3;
-  color: #e71d1d;
+  color: #FF9F00;
   background-color: #eeeeee;
   border-color: #dddddd;
 }
@@ -7874,7 +7874,7 @@ button:focus {
 }
 .am-top-header .navbar-collapse .am-icons-nav > li.dropdown .am-notifications .am-scroller > .content > ul > li:hover > a .logo,
 .am-top-header .navbar-collapse .am-icons-nav > li.dropdown .am-messages .am-scroller > .content > ul > li:hover > a .logo {
-  background-color: #eb4242;
+  background-color: #ff9a00;
 }
 .am-top-header .navbar-collapse .am-icons-nav > li.dropdown .am-notifications .am-scroller > .content > ul > li:hover > a .logo .icon,
 .am-top-header .navbar-collapse .am-icons-nav > li.dropdown .am-messages .am-scroller > .content > ul > li:hover > a .logo .icon {
@@ -8195,7 +8195,7 @@ button:focus {
   }
   .am-top-header .navbar-collapse .am-icons-nav > li.dropdown .am-messages .am-scroller > .content > ul > li:hover > a .user-content .circle,
   .am-top-header .navbar-collapse .am-icons-nav > li.dropdown .am-notifications .am-scroller > .content > ul > li:hover > a .user-content .circle {
-    background-color: #ff7e00;
+    background-color: #FF9F00;
   }
   .am-top-header .navbar-collapse .am-icons-nav > li.dropdown .am-messages .am-scroller > .content > ul > li:hover > a .logo,
   .am-top-header .navbar-collapse .am-icons-nav > li.dropdown .am-notifications .am-scroller > .content > ul > li:hover > a .logo {
@@ -12178,13 +12178,13 @@ fieldset[disabled] .btn-alt4.active {
   background-color: #ffffff;
 }
 .btn-primary.btn-shade1 {
-  background-color: #ed5454;
-  border-color: #ed5454;
+  background-color: #FF9F00;
+  border-color: #FF9F00;
 }
 .btn-primary.btn-shade1:focus,
 .btn-primary.btn-shade1.focus {
-  background-color: #ed5454;
-  border-color: #ed5454;
+  background-color: #FF9F00;
+  border-color: #FF9F00;
 }
 .btn-primary.btn-shade1:hover {
   background-color: #f06c6c;
@@ -12226,11 +12226,11 @@ fieldset[disabled] .btn-primary.btn-shade1:active,
 .btn-primary.btn-shade1.disabled.active,
 .btn-primary.btn-shade1[disabled].active,
 fieldset[disabled] .btn-primary.btn-shade1.active {
-  background-color: #ed5454;
-  border-color: #ed5454;
+  background-color: #FF9F00;
+  border-color: #FF9F00;
 }
 .btn-primary.btn-shade1 .badge {
-  color: #ed5454;
+  color: #FF9F00;
 }
 .btn-primary.btn-shade2 {
   background-color: #ec4b4b;
@@ -12288,13 +12288,13 @@ fieldset[disabled] .btn-primary.btn-shade2.active {
   color: #ec4b4b;
 }
 .btn-primary.btn-shade3 {
-  background-color: #eb4242;
-  border-color: #eb4242;
+  background-color: #ff7e00;
+  border-color: #ff7e00;
 }
 .btn-primary.btn-shade3:focus,
 .btn-primary.btn-shade3.focus {
-  background-color: #eb4242;
-  border-color: #eb4242;
+  background-color: #ff7e00;
+  border-color: #ff7e00;
 }
 .btn-primary.btn-shade3:hover {
   background-color: #ee5959;
@@ -12336,11 +12336,11 @@ fieldset[disabled] .btn-primary.btn-shade3:active,
 .btn-primary.btn-shade3.disabled.active,
 .btn-primary.btn-shade3[disabled].active,
 fieldset[disabled] .btn-primary.btn-shade3.active {
-  background-color: #eb4242;
-  border-color: #eb4242;
+  background-color: #ff7e00;
+  border-color: #ff7e00;
 }
 .btn-primary.btn-shade3 .badge {
-  color: #eb4242;
+  color: #ff7e00;
 }
 .btn-primary.btn-shade4 {
   background-color: #ea3939;
@@ -19359,5 +19359,36 @@ div.dataTables_wrapper div.dataTables_length label select {
     margin-bottom: 0px;
   }
 }
+
+/* ==========================================================================
+   This is the Custom CSS File for the Dashboard
+   ========================================================================== */
+   input:-webkit-autofill,
+   input:-webkit-autofill:hover,
+   input:-webkit-autofill:focus,
+   input:-webkit-autofill:active {
+       transition: background-color 5000s ease-in-out 0s;
+       background-color: #333!important;
+       color: #f9f9f9 !important;
+       -webkit-text-fill-color: #a3a2a2 !important;
+   }
+   .btn-primary:hover{
+     transition: all .5s;
+   }
+   .btn-primary{
+     font-weight: 700;
+   }
+   .btn-primary i{
+     position: relative;
+     top:-1px;
+     padding-left:5px;
+   }
+   .btn-primary:hover i{
+     padding-left: 10px;
+     transition: all .5s;
+   }
+   .am-top-header .navbar-header .navbar-brand{
+     background-image: url('../images/bh-sm.png')
+   }
 
 /*# sourceMappingURL=dashboard.css.map */

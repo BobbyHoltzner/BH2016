@@ -12,6 +12,19 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.styles('dashboard.css');
-    mix.browserify('dashboard.js');
+    mix.styles(['dashboard.css', 'custom.css'],'public/css/dashboard.css');
+    mix.scripts('dashboard.js', 'public/js/dashboard.js');
+
+    mix.styles([
+      'frontend.css'
+    ], 'public/frontend/css/main.css');
+
+    mix.scripts([
+      'frontend.js'
+    ], 'public/frontend/js/main.js');
+    mix.scriptsIn(
+        'resources/assets/js/libs',
+        'public/frontend/js/libs.js'
+    );
+    mix.browserify('app.js');
 });

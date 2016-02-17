@@ -1,82 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
-</head>
-<body id="app-layout">
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
+    <title><?php // TODO Echo out the title here ?></title>
+    <meta name="description" content="<?php // TODO echo out the description ?>">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300,300italic,400italic,700italic,500italic' rel='stylesheet' type='text/css'>
+    <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/frontend/css/main.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="wrapper">
+          <div id="logoContainer">
+            <a href="#"><img width="200" src="images/logo.png" alt=""></a>
+          </div>
+          <ul class="navigation">
+            <li class="top-level"><a class="top" href="#">About</a></li>
+            <li class="top-level"><a class="top" href="#">Blog</a></li>
+            <li class="top-level"><a class="top" href="#">Projects</a></li>
+            <li class="top-level"><a class="top" href="#">Contact</a></li>
+          </ul>
+          <div class="social">
+            <a href="#"><span class="ion-social-facebook"></span></a>
+            <a href="#"><span class="ion-social-twitter"></span></a>
+            <a href="#"><span class="ion-social-googleplus"></span></a>
+            <a href="#"><span class="ion-social-github"></span></a>
+            <a href="#"><span class="ion-social-instagram"></span></a>
+          </div>
         </div>
-    </nav>
+      </nav>
+    </header>
 
     @yield('content')
 
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-</body>
+    <footer>
+      <div class="wrapper">
+        <div class="copyright">
+          <p>
+            &copy; <?php echo date('Y') ?> Bobby Holtzner. All Rights Reserved.
+          </p>
+        </div>
+        <div class="social">
+          <a href="#"><span class="ion-social-facebook"></span></a>
+          <a href="#"><span class="ion-social-twitter"></span></a>
+          <a href="#"><span class="ion-social-googleplus"></span></a>
+          <a href="#"><span class="ion-social-github"></span></a>
+          <a href="#"><span class="ion-social-instagram"></span></a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="/frontend/js/libs.js" charset="utf-8"></script>
+    <script src="/frontend/js/main.js" charset="utf-8"></script>
+  </body>
 </html>

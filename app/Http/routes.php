@@ -11,15 +11,21 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/blog', 'BlogController@index');
 Route::get('/blog/{slug}', 'BlogController@showPost');
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+  Route::auth();
 
-    Route::get('/dashboard', 'DashboardController@index');
+  Route::get('/dashboard', 'DashboardController@index');
+
+  Route::group(['prefix' => 'dashboard'], function(){
+    Route::resource('posts', 'PostController');
+  });
+  
 });
 Route::get('/{slug}', 'PagesController@showPage');

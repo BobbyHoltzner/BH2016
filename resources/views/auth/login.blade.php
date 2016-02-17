@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="form-group login-submit">
-      <button data-dismiss="modal" type="submit" class="btn btn-primary btn-lg">Log me in</button>
+      <button data-dismiss="modal" type="submit" class="btn btn-primary btn-lg">Log me in <i class="icon s7-angle-right"></i></button>
     </div>
   </div>
 </form>
