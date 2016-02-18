@@ -16,8 +16,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/blog', 'BlogController@index');
-Route::get('/blog/{slug}', 'BlogController@showPost');
+// Route::get('/blog', 'BlogController@index');
+// Route::get('/blog/{slug}', 'BlogController@showPost');
 Route::group(['middleware' => 'web'], function () {
   Route::auth();
 
@@ -26,6 +26,6 @@ Route::group(['middleware' => 'web'], function () {
   Route::group(['prefix' => 'dashboard'], function(){
     Route::resource('posts', 'PostController');
   });
-  
+
 });
-Route::get('/{slug}', 'PagesController@showPage');
+// Route::get('/{slug}', 'PagesController@showPage');

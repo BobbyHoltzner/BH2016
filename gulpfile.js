@@ -12,7 +12,13 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.styles(['dashboard.css', 'custom.css'],'public/css/dashboard.css');
+    mix.styles([
+      'sweetalert.css',
+      'basic.css',
+      'dropzone.css',
+      'dashboard.css',
+      'custom.css'
+    ],'public/css/dashboard.css');
     mix.scripts('dashboard.js', 'public/js/dashboard.js');
 
     mix.styles([

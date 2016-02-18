@@ -6,6 +6,7 @@ import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
 import LoginHandler from './components/login.js';
 import Home from './components/home.js';
 import About from './components/about.js';
+import CreatePost from './components/createPost.js';
 
 const App = React.createClass({
 
@@ -22,6 +23,8 @@ const App = React.createClass({
     )
   }
 })
+
+render((<CreatePost />), document.getElementById('createPost'));
 
 // render((
 //   <Router history={browserHistory}>
