@@ -9,6 +9,8 @@
     <link rel="shortcut icon" href="/images/bh-favicon.png">
     <title>Amaretti</title>
     <link rel="stylesheet" type="text/css" href="/lib/stroke-7/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/lib/summernote/summernote.css"/>
+    <link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="/lib/jquery.nanoscroller/css/nanoscroller.css"/><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -42,12 +44,17 @@
     <script src="/lib/datatables/plugins/buttons/js/buttons.colVis.js" type="text/javascript"></script>
     <script src="/lib/datatables/plugins/buttons/js/buttons.bootstrap.js" type="text/javascript"></script>
     <script src="/js/app-tables-datatables.js" type="text/javascript"></script>
+    <script src="/lib/summernote/summernote.min.js" type="text/javascript"></script>
+    <script src="/lib/summernote/summernote-ext-amaretti.js" type="text/javascript"></script>
+    <script src="/js/dropzone.js" charset="utf-8"></script>
+    <script src="/js/app-form-wysiwyg.js" type="text/javascript"></script>
     <script src="/js/app.js" charset="utf-8"></script>
     <script type="text/javascript">
       $(document).ready(function(){
       	//initialize the javascript
       	App.init();
         App.dataTables();
+        App.textEditors();
       });
 
     </script>

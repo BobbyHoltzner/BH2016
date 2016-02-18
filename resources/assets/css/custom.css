@@ -28,3 +28,48 @@
    .am-top-header .navbar-header .navbar-brand{
      background-image: url('../images/bh-sm.png')
    }
+   body{
+     background-color: #dbdbdb;
+   }
+
+  /* ==========================================================================
+     Create Post Page
+     ========================================================================== */
+      #createPost{
+        display: flex;
+        flex-direction: row;
+        flex:1;
+        padding-bottom: 80px;
+      }
+      #createPostForm{
+        flex:3;
+      }
+      #createPostForm .form-group{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      #createPostForm label{
+        width:10%;
+      }
+      #createPostForm .note-editor{
+        width: 100%;
+      }
+      #createPostForm input, #createPostForm textarea{
+        flex:1;
+      }
+      #createPostSidebar{
+        flex:1;
+        padding-left:50px;
+        padding-top: 15px;
+      }
+      #createPost .form-horizontal .form-group{
+        margin-left:0;
+        margin-right:0;
+      }
+      #createPostSidebar #selectCategories{
+        padding-top: 15px;
+      }
+      #createPost .submit-group{
+        padding-top:25px;
+      }

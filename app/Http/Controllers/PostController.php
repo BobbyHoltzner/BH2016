@@ -15,6 +15,10 @@ class PostController extends Controller
       return view('cms.posts.index')->with('posts', $posts);
     }
 
+    public function show(Post $post){
+      return view('posts.show', compact('post'));
+    }
+
     public function create(){
       return view('cms.posts.create');
     }
