@@ -4,7 +4,7 @@ var App = (function () {
   App.textEditors = function( ){
 
     //Summernote
-    $('#editor').summernote({
+    $('#summernote').summernote({
       height: 300
     });
 

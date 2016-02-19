@@ -40,4 +40,14 @@ class PostController extends Controller
       $post = Post::find(id);
       $post->delete();
     }
+
+    public function uploadImage(Request $request){
+      $file = $request->file('featured_image');
+      dd($file);
+      // $name = time() . $file->getClientOriginalName();
+      //
+      // $file->move('/featured-images', $name);
+      //
+      // return 'Done';
+    }
 }

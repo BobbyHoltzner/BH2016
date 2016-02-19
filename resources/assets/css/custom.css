@@ -63,12 +63,12 @@
         padding-left:50px;
         padding-top: 15px;
       }
+      #createPostSidebar button{
+        align-self: flex-end;
+      }
       #createPost .form-horizontal .form-group{
         margin-left:0;
         margin-right:0;
-      }
-      #createPostSidebar #selectCategories{
-        padding-top: 15px;
       }
       #createPost .submit-group{
         padding-top:25px;
