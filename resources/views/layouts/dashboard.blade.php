@@ -7,9 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="/images/bh-favicon.png">
-    <title>Amaretti</title>
+    <title>BH Designs Blog</title>
     <link rel="stylesheet" type="text/css" href="/lib/stroke-7/style.css"/>
     <link rel="stylesheet" type="text/css" href="/lib/summernote/summernote.css"/>
+    <link rel="stylesheet" href="/lib/sweetalert/dist/sweetalert.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="/lib/jquery.nanoscroller/css/nanoscroller.css"/><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -34,6 +35,7 @@
     <script src="/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.min.js" type="text/javascript"></script>
     <script src="/js/dashboard.js" type="text/javascript"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js" charset="utf-8"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/lib/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="/lib/datatables/js/dataTables.bootstrap.min.js" type="text/javascript"></script>

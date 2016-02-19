@@ -8,22 +8,23 @@ class Post extends Model
 {
     protected $table = 'posts';
 
-    protected $dates = 'published_at';
-
     protected $fillable = [
-      'title', 'slug', 'content', 'author'
+      'title', 'slug', 'content', 'author', 'image'
     ];
 
     public function post_categories(){
-      return $this->hasMany(PostCategory::class);
+      return $this->hasMany('App\PostCategory');
     }
 
     public function post_tags(){
-      return $this->hasMany(PostTag::class);
+      return $this->hasMany('App\PostTag');
     }
 
     public function author(){
-      return $this->belongsTo(User::class);
+      return $this->belongsTo('App\User');
+    }
+    public function category_names(){
+      return $this->hasMany('App\Category');
     }
 
 

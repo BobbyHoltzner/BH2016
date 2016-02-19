@@ -11,7 +11,11 @@ var App = (function () {
         "<'row am-datatable-footer'<'col-sm-5'i><'col-sm-7'p>>"
     } );
 
-    $("#table1").dataTable();
+    $("#table1").dataTable({
+      "language": {
+        "zeroRecords": "There are no posts that match those terms."
+      },
+    });
 
     //Remove search & paging dropdown
     $("#table2").dataTable({

@@ -13,6 +13,10 @@ class PostCategory extends Model
     ];
 
     public function post(){
-      return $this->belongsTo(Post::class);
+      return $this->belongsTo('App\Post');
+    }
+
+    public function cat_names(){
+      return $this->hasOne('App\Category');
     }
 }

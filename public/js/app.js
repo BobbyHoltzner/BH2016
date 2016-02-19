@@ -11221,11 +11221,11 @@ var _vue = require('vue');
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueResource = require('vue-resource');
-
-var _vueResource2 = _interopRequireDefault(_vueResource);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(require('vue-resource'));
+
+$("div#dropzone2").dropzone({ url: "/file/post" });
 
 var CreatePostForm = new _vue2.default({
   el: '#createPost',
@@ -11233,16 +11233,134 @@ var CreatePostForm = new _vue2.default({
     title: '',
     slug: '',
     category: '',
-    categories: []
+    categories: [],
+    selectedCategories: [],
+    token: '',
+    featured_image: ''
   },
+  ready: function ready() {
+    this.getCategories();
+    this.createPostSuccess();
+  },
+
   methods: {
-    submit: function submit(e) {
-      var note = $('#summernote').code();
-      console.log(note);
+    getCategories: function getCategories() {
+      var _this = this;
+
+      this.$http({ url: '/dashboard/categories', method: 'GET' }).then(function (response) {
+        var data = response.data;
+        var category = {};
+        for (var i = 0; i < data.length; i++) {
+          category = { name: data[i].name, id: data[i].id };
+          _this.categories.push(category);
+        }
+      }, function (reponse) {
+        // Handle the error
+      });
     },
     addCategory: function addCategory() {
-      this.categories.push({ category: this.category });
+      var _this2 = this;
+
+      if (this.category) {
+        this.$http({
+          url: '/dashboard/categories',
+          method: 'POST',
+          data: {
+            _token: this.token,
+            name: this.category
+          }
+        }).then(function (data) {
+          _this2.categories = [];
+          _this2.getCategories();
+          _this2.category = '';
+        }, function (reponse) {
+          console.log(response);
+          // Handle the error
+        });
+      }
+    },
+    deleteCategory: function deleteCategory(e) {
+      var _this3 = this;
+
+      var id = e.target.id;
+      this.$http({
+        url: '/dashboard/categories/' + id,
+        method: 'DELETE',
+        data: {
+          _token: this.token
+        }
+      }).then(function (data) {
+        _this3.categories = [];
+        _this3.getCategories();
+      }, function (reponse) {
+        // Handle the error
+      });
+    },
+    createPost: function createPost() {
+      var _this4 = this;
+
+      var content = $('#summernote').code();
+      var image = $('#image').val();
+      var author = $('#author').val();
+      this.$http({
+        url: '/dashboard/posts',
+        method: 'POST',
+        data: {
+          title: this.title,
+          slug: this.slug,
+          content: content,
+          image: image,
+          _token: this.token,
+          author: author,
+          categories: this.selectedCategories
+        }
+      }).then(function (data) {
+        _this4.clearInputs();
+      }, function (reponse) {
+        // Handle the error
+      });
+    },
+    createPostSuccess: function createPostSuccess() {
+      swal({
+        title: "Post Created",
+        text: "You created a post.",
+        type: "success",
+        showCancelButton: true,
+        cancelButtonText: 'Return to Posts',
+        confirmButtonText: 'Write Another Post'
+      }, function (isConfirm) {
+        if (isConfirm) {
+          // Do Nothing
+        } else {
+            window.location = '/dashboard/posts';
+          }
+      });
+    },
+    clearInputs: function clearInputs() {
+      this.title = '';
+      this.slug = '';
       this.category = '';
+      this.categories = [];
+      this.selectedCategories = [];
+      var content = $('#summernote').code('');
+      var image = $('#image').val('');
+    },
+    titleToSlug: function titleToSlug() {
+      if (!this.slug) {
+        var slug = this.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+        this.slug = slug;
+      }
+    },
+    slugToSlug: function slugToSlug() {
+      this.slug = this.slug.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+    }
+  },
+  computed: {
+    categoryEmpty: function categoryEmpty() {
+      if (!this.category) {
+        return true;
+      }
+      return false;
     }
   }
 });

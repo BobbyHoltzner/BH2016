@@ -17,10 +17,10 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->string('title');
             $table->text('content');
+            $table->string('image');
             $table->integer('author')->unsigned();
             $table->foreign('author')->references('id')->on('users');
             $table->integer('views')->unsigned();
-            $table->timestamp('published_at')->index();
             $table->timestamps();
         });
     }

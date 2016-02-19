@@ -26,7 +26,9 @@ Route::group(['middleware' => 'web'], function () {
   Route::group(['prefix' => 'dashboard'], function(){
     Route::resource('posts', 'PostController');
     Route::post('image', 'PostController@uploadImage');
+    Route::resource('categories', 'CategoryController');
   });
 
 });
+Route::get('/{slug}', 'PostController@show');
 // Route::get('/{slug}', 'PagesController@showPage');

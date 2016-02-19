@@ -105,9 +105,9 @@
 
     /*
     This is a list of all available events you can register on a dropzone object.
-    
+
     You can register an event handler like this:
-    
+
         dropzone.on("dragEnter", function() { });
      */
 
@@ -370,8 +370,9 @@
       totaluploadprogress: noop,
       sending: noop,
       sendingmultiple: noop,
-      success: function(file) {
+      success: function(file, response) {
         if (file.previewElement) {
+          $('#image').val(response);
           return file.previewElement.classList.add("dz-success");
         }
       },
@@ -380,7 +381,7 @@
         return this.emit("error", file, "Upload canceled.");
       },
       canceledmultiple: noop,
-      complete: function(file) {
+      complete: function(file, response) {
         if (file._removeLink) {
           file._removeLink.textContent = this.options.dictRemoveFile;
         }
@@ -1655,7 +1656,7 @@
 
 
   /*
-  
+
   Bugfix for iOS 6 and 7
   Source: http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   based on the work of https://github.com/stomita/ios-imagefile-megapixel
