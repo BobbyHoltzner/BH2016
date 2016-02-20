@@ -162,11 +162,12 @@ ul.dropdown li a:hover{
   display: flex;
   justify-content: center;
   flex-direction: column;
+  flex:1;
 }
 #hero .headshot img{
   border-radius: 100%;
   flex: 1;
-  width: 550px;
+  max-height: 280px;
   align-self: center;
   max-width: 280px;
   height: auto;
@@ -297,6 +298,25 @@ section#about p{
 #mc_embed_signup input.email{
   width: auto;
 }
+/**
+ * Single Post Page
+ */
+ a.singleCategory{
+   background: #ff7e00;
+   padding:5px 10px;
+   border-radius: 3px;
+   margin:0px 10px;
+   color: #fff;
+   font-size:12px;
+ }
+ a.singleCategory:hover{
+   background: #FBA81A;
+   transition: all .5s;
+   text-decoration: none;
+ }
+ a.singleCategory:first-child{
+   margin-left:0!important;
+ }
 
 /**
  * Footer

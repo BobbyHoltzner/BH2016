@@ -3,7 +3,6 @@
 @section('title', 'Posts')
 
 @section('content')
-<?php var_dump($posts->first()) ?>
   <div class="row">
     <div class="col-sm-12">
       <div class="widget widget-fullwidth widget-small">
@@ -28,7 +27,11 @@
                 <td>{{$post->title}}</td>
                 <td>{{$post->slug}}</td>
                 <td class="center">{{count($post->comments)}}</td>
-                <td>{{$post->categories}}</td>
+                <td>
+                  @foreach($post->categories as $category)
+                    {{$category->name}}
+                  @endforeach
+                </td>
                 <td class="center">
                   <a class="showPost" target="_blank" href="/{{$post->slug}}"><i class="icon s7-look"></i></a>
                   <a class="editPost" href="/dashboard/posts/{{$post->id}}"><i class="icon s7-note"></i></a>

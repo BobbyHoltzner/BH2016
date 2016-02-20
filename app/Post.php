@@ -12,8 +12,8 @@ class Post extends Model
       'title', 'slug', 'content', 'author', 'image'
     ];
 
-    public function post_categories(){
-      return $this->hasMany('App\PostCategory');
+    public function categories(){
+      return $this->hasManyThrough('App\Category', 'App\PostCategory', 'post_id', 'id');
     }
 
     public function post_tags(){
@@ -23,9 +23,4 @@ class Post extends Model
     public function author(){
       return $this->belongsTo('App\User');
     }
-    public function category_names(){
-      return $this->hasMany('App\Category');
-    }
-
-
 }

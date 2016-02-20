@@ -16,11 +16,9 @@ class CreatePostCategoriesTable extends Migration
             $table->increments('id');
             $table->integer('post_id')->unsigned();
             $table->integer('cat_id')->unsigned();
+            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('cat_id')->references('id')->on('categories');
             $table->timestamps();
-        });
-        Schema::table('post_categories', function($table){
-          $table->foreign('post_id')->references('id')->on('posts');
-          $table->foreign('cat_id')->references('id')->on('categories');
         });
     }
 

@@ -8,7 +8,7 @@ class Category extends Model
 {
     protected $table = 'categories';
 
-    protected $fillable = ['name', 'parent', 'image' ];
+    protected $fillable = ['name', 'parent', 'image', 'slug' ];
 
     public function cat_relationship(){
       return $this->hasOne('App\PostCategory');

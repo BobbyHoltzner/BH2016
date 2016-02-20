@@ -11240,7 +11240,6 @@ var CreatePostForm = new _vue2.default({
   },
   ready: function ready() {
     this.getCategories();
-    this.createPostSuccess();
   },
 
   methods: {
@@ -11316,6 +11315,7 @@ var CreatePostForm = new _vue2.default({
         }
       }).then(function (data) {
         _this4.clearInputs();
+        _this4.createPostSuccess();
       }, function (reponse) {
         // Handle the error
       });

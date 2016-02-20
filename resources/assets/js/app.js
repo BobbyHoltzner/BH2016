@@ -17,7 +17,6 @@ var CreatePostForm = new Vue({
   },
   ready(){
     this.getCategories();
-    this.createPostSuccess();
   },
   methods: {
     getCategories(){
@@ -84,7 +83,7 @@ var CreatePostForm = new Vue({
         }
       }).then((data) =>{
         this.clearInputs();
-
+        this.createPostSuccess();
       }, (reponse) => {
         // Handle the error
       });
