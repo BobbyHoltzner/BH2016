@@ -11,4 +11,8 @@ class Tag extends Model
     protected $fillable = [
       'name', 'slug'
     ];
+
+    public function post_tags(){
+      return $this->hasManyThrough('App\PostTag', 'App\Post', 'id', 'post_id');
+    }
 }

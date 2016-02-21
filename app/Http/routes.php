@@ -26,10 +26,11 @@ Route::group(['middleware' => 'web'], function () {
   Route::group(['prefix' => 'dashboard'], function(){
     Route::resource('posts', 'PostController');
     Route::post('image', 'PostController@uploadImage');
+    Route::get('categories/all', 'CategoryController@all');
     Route::resource('categories', 'CategoryController');
-    Route::get('allCategories', 'CategoryController@all');
-        Route::get('tags/allTags', 'TagController@all');
+    Route::get('tags/all', 'TagController@all');
     Route::resource('tags', 'TagController');
+    Route::resource('settings', 'SettingController');
   });
 
 });

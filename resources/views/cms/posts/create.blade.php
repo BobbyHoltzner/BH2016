@@ -46,9 +46,32 @@
           <div class="form-group">
             <div id="selectCategories">
               <div class="am-checkbox" v-for="cat in categories">
-                <input id="@{{cat.name}}-@{{cat.id}}" value="@{{cat.id}}" v-model="selectedCategories" type="checkbox">
+                <input checked="@{{cat.checked}}" id="@{{cat.name}}-@{{cat.id}}" value="@{{cat.id}}" v-model="selectedCategories" type="checkbox">
                 <label for="@{{cat.name}}-@{{cat.id}}">@{{cat.name}}</label>
                 <i class="icon s7-less" id="@{{cat.id}}" v-on:click="deleteCategory($event)"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-dark">
+        <div class="panel-heading">
+          Add Tags
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <input name="addTag" @keyup.enter="addTag" v-model="tag" type="text" placeholder="Add Tag" id="addTag" class="form-control" />
+            <input type="hidden" value="{{csrf_token()}}" v-model="token"/>
+          </div>
+          <div class="form-group">
+            <button :disabled="tagEmpty" v-on:click="addTag()" class="btn btn-primary">Add Tag</button>
+          </div>
+          <div class="form-group">
+            <div id="selectTags">
+              <div class="am-checkbox" v-for="tag in tags">
+                <input  id="@{{tag.name}}-@{{tag.id}}" value="@{{tag.id}}" v-model="selectedTags" type="checkbox">
+                <label for="@{{tag.name}}-@{{tag.id}}">@{{tag.name}}</label>
+                <i class="icon s7-less" id="@{{tag.id}}" v-on:click="deleteTag($event)"></i>
               </div>
             </div>
           </div>

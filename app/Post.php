@@ -16,8 +16,8 @@ class Post extends Model
       return $this->hasManyThrough('App\Category', 'App\PostCategory', 'post_id', 'id');
     }
 
-    public function post_tags(){
-      return $this->hasMany('App\PostTag');
+    public function tags(){
+      return $this->hasManyThrough('App\Tag', 'App\PostTag', 'post_id', 'id');
     }
 
     public function author(){

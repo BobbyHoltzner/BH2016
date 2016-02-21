@@ -20850,6 +20850,8 @@ div.dataTables_wrapper div.dataTables_length label select {
         flex:1;
         padding-left:50px;
         padding-top: 15px;
+        display: flex;
+        flex-direction: column;
       }
       #createPostSidebar button{
         align-self: flex-end;
@@ -20897,6 +20899,7 @@ div.dataTables_wrapper div.dataTables_length label select {
         .deletePost{
           color: #FF1E00;
           transition: all .5s;
+          cursor: pointer;
         }
         .deletePost:hover{
           color: rgba(255, 30, 0, .6);
@@ -20905,6 +20908,7 @@ div.dataTables_wrapper div.dataTables_length label select {
         .editPost{
           color: #FFB100;
           transition: all .5s;
+          cursor: pointer;
         }
         .editPost:hover{
           color: rgba(255, 177, 0, .6);
@@ -20913,6 +20917,7 @@ div.dataTables_wrapper div.dataTables_length label select {
         .showPost{
           color: #00BF32;
           transition: all .5s;
+          cursor: pointer;
         }
         .showPost:hover{
           color: rgba(0, 191, 50, .6);
@@ -20924,6 +20929,18 @@ div.dataTables_wrapper div.dataTables_length label select {
         }
         .dataTables_filter input{
           margin-left: 10px;
+        }
+        .btn-cancel{
+          background: #FF1E00;
+          color: #f9f9f9;
+          border-color: #FF1E00;
+        }
+        .btn-cancel:hover{
+          background: rgba(255, 30, 0, .6);
+          border-color: rgba(255, 30, 0, .6);
+        }
+        [v-cloak]{
+          display: none;
         }
 
 /*# sourceMappingURL=dashboard.css.map */

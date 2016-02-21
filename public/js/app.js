@@ -11227,208 +11227,591 @@ _vue2.default.use(require('vue-resource'));
 
 $("div#dropzone2").dropzone({ url: "/file/post" });
 
-var CreatePostForm = new _vue2.default({
-  el: '#createPost',
-  data: {
-    title: '',
-    slug: '',
-    category: '',
-    categories: [],
-    selectedCategories: [],
-    token: '',
-    featured_image: ''
-  },
-  ready: function ready() {
-    this.getCategories();
-  },
-
-  methods: {
-    getCategories: function getCategories() {
-      var _this = this;
-
-      this.$http({ url: '/dashboard/categories', method: 'GET' }).then(function (response) {
-        var data = response.data;
-        var category = {};
-        for (var i = 0; i < data.length; i++) {
-          category = { name: data[i].name, id: data[i].id };
-          _this.categories.push(category);
-        }
-      }, function (reponse) {
-        // Handle the error
-      });
+if (document.getElementById('createPost')) {
+  var CreatePostForm = new _vue2.default({
+    el: '#createPost',
+    data: {
+      title: '',
+      slug: '',
+      categorySlug: '',
+      tagSlug: '',
+      category: '',
+      categories: [],
+      selectedCategories: [],
+      token: '',
+      featured_image: '',
+      tag: '',
+      tags: [],
+      selectedTags: []
     },
-    addCategory: function addCategory() {
-      var _this2 = this;
+    ready: function ready() {
+      this.getCategories();
+      this.getTags();
+    },
 
-      if (this.category) {
+    methods: {
+      getCategories: function getCategories() {
+        var _this = this;
+
+        this.$http({
+          url: '/dashboard/categories/all',
+          method: 'GET'
+        }).then(function (response) {
+          var data = response.data;
+          var category = {};
+          for (var i = 0; i < data.length; i++) {
+            category = { name: data[i].name, id: data[i].id, checked: false };
+            _this.categories.push(category);
+          }
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      addCategory: function addCategory() {
+        var _this2 = this;
+
+        if (this.category) {
+          this.addCategorySlug();
+          this.$http({
+            url: '/dashboard/categories',
+            method: 'POST',
+            data: {
+              _token: this.token,
+              name: this.category,
+              slug: this.categorySlug,
+              description: ''
+            }
+          }).then(function (data) {
+            _this2.categories = [];
+            _this2.getCategories();
+            _this2.category = '';
+            _this2.categorySlug = '';
+          }, function (reponse) {
+            // Handle the error
+          });
+        }
+      },
+      deleteCategory: function deleteCategory(e) {
+        var _this3 = this;
+
+        var id = e.target.id;
+        this.$http({
+          url: '/dashboard/categories/' + id,
+          method: 'DELETE',
+          data: {
+            _token: this.token
+          }
+        }).then(function (data) {
+          _this3.categories = [];
+          _this3.getCategories();
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      getTags: function getTags() {
+        var _this4 = this;
+
+        this.$http({
+          url: '/dashboard/tags/all',
+          method: 'GET'
+        }).then(function (response) {
+          var data = response.data;
+          var tag = {};
+          for (var i = 0; i < data.length; i++) {
+            tag = { name: data[i].name, id: data[i].id };
+            _this4.tags.push(tag);
+          }
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      addTag: function addTag() {
+        var _this5 = this;
+
+        if (this.tag) {
+          this.addTagSlug();
+          this.$http({
+            url: '/dashboard/tags',
+            method: 'POST',
+            data: {
+              _token: this.token,
+              name: this.tag,
+              slug: this.tagSlug
+            }
+          }).then(function (data) {
+            _this5.tags = [];
+            _this5.getTags();
+            _this5.tag = '';
+            _this5.tagSlug = '';
+          }, function (reponse) {
+            // Handle the error
+          });
+        }
+      },
+      deleteTag: function deleteTag(e) {
+        var _this6 = this;
+
+        var id = e.target.id;
+        this.$http({
+          url: '/dashboard/tags/' + id,
+          method: 'DELETE',
+          data: {
+            _token: this.token
+          }
+        }).then(function (data) {
+          _this6.tags = [];
+          _this6.getTags();
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      createPost: function createPost() {
+        var _this7 = this;
+
+        var content = $('#summernote').code();
+        var image = $('#image').val();
+        var author = $('#author').val();
+        this.$http({
+          url: '/dashboard/posts',
+          method: 'POST',
+          data: {
+            title: this.title,
+            slug: this.slug,
+            content: content,
+            image: image,
+            _token: this.token,
+            author: author,
+            categories: this.selectedCategories,
+            tags: this.selectedTags
+          }
+        }).then(function (data) {
+          _this7.clearInputs();
+          _this7.createPostSuccess();
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      createPostSuccess: function createPostSuccess() {
+        swal({
+          title: "Post Created",
+          text: "You created a post.",
+          type: "success",
+          showCancelButton: true,
+          cancelButtonText: 'Return to Posts',
+          confirmButtonText: 'Write Another Post'
+        }, function (isConfirm) {
+          if (isConfirm) {
+            // Do Nothing
+          } else {
+              window.location = '/dashboard/posts';
+            }
+        });
+      },
+      clearInputs: function clearInputs() {
+        this.title = '';
+        this.slug = '';
+        this.category = '';
+        this.tag = '', this.selectedTags = [], this.categories = [];
+        this.selectedCategories = [];
+        var content = $('#summernote').code('');
+        var image = $('#image').val('');
+      },
+      titleToSlug: function titleToSlug() {
+        if (!this.slug) {
+          var slug = this.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+          this.slug = slug;
+        }
+      },
+      slugToSlug: function slugToSlug() {
+        this.slug = this.slug.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+      },
+      addTagSlug: function addTagSlug() {
+        this.tagSlug = this.tag.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+      },
+      addCategorySlug: function addCategorySlug() {
+        this.categorySlug = this.tag.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+      }
+    },
+    computed: {
+      categoryEmpty: function categoryEmpty() {
+        if (!this.category) {
+          return true;
+        }
+        return false;
+      },
+      tagEmpty: function tagEmpty() {
+        if (!this.tag) {
+          return true;
+        }
+        return false;
+      }
+    }
+  });
+}
+
+if (document.getElementById('tagManagement')) {
+  var addTagForm = new _vue2.default({
+    el: '#tagManagement',
+    data: {
+      id: '',
+      name: '',
+      slug: '',
+      token: '',
+      tags: [],
+      editMode: false
+
+    },
+    ready: function ready() {
+      this.initTable();
+    },
+
+    methods: {
+      initTable: function initTable() {
+        var tagsTable = $("#tags-table").dataTable({
+          dom: "<'row am-datatable-header'<'col-sm-6'l><'col-sm-6'f>>" + "<'row am-datatable-body'<'col-sm-12'tr>>" + "<'row am-datatable-footer'<'col-sm-5'i><'col-sm-7'p>>",
+          "language": {
+            "zeroRecords": "There are no tags."
+          }
+        });
+      },
+      createTag: function createTag() {
+        var _this8 = this;
+
+        var tag = { name: this.name, slug: this.slug };
+        this.tags.push(tag);
+        console.log(this.slug, this.name);
+        this.$http({
+          url: '/dashboard/tags',
+          method: 'POST',
+          data: {
+            name: this.name,
+            slug: this.slug,
+            _token: this.token
+          }
+        }).then(function (data) {
+          console.log(data.request);
+          swal({
+            title: "Success!",
+            text: _this8.name + ' Successfully Added.',
+            type: "success",
+            showCancelButton: false,
+            confirmButtonText: 'Close'
+          }, function (isConfirm) {
+            if (isConfirm) {
+              _this8.exitAlertReload();
+            }
+          });
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      getTags: function getTags() {
+        this.$http({
+          url: '/dashboard/tags/allTags',
+          method: 'GET',
+          data: {}
+        }).then(function (data) {
+          console.log(data.length);
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      nameToSlug: function nameToSlug() {
+        if (!this.slug) {
+          var slug = this.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+          this.slug = slug;
+        }
+      },
+      slugToSlug: function slugToSlug() {
+        this.slug = this.slug.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+      },
+      deleteTag: function deleteTag(tag) {
+        var _this9 = this;
+
+        this.$http({
+          url: '/dashboard/tags/' + tag,
+          method: 'DELETE',
+          data: {
+            _token: this.token
+          }
+        }).then(function (data) {
+          _this9.exitAlertReload();
+        }, function (reponse) {
+          swal({
+            title: "Error",
+            text: response,
+            type: "error",
+            showCancelButton: false,
+            confirmButtonText: 'Okay'
+          });
+        });
+      },
+      confirmDeleteTag: function confirmDeleteTag(e) {
+        var _this10 = this;
+
+        var tag = e.target.id;
+        swal({
+          title: "Are you sure?",
+          text: "You are about to delete this tag. Please Confirm.",
+          type: "warning",
+          showCancelButton: true,
+          cancelButtonText: 'Cancel',
+          confirmButtonText: 'Delete Tag'
+        }, function (isConfirm) {
+          if (isConfirm) {
+            _this10.deleteTag(tag);
+          } else {}
+        });
+      },
+      editTag: function editTag(e) {
+        var _this11 = this;
+
+        this.editMode = true;
+        this.$http({
+          url: '/dashboard/tags/' + e.target.id,
+          method: 'GET',
+          data: {}
+        }).then(function (data) {
+          _this11.id = data.data.id;
+          _this11.name = data.data.name;
+          _this11.slug = data.data.slug;
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      cancelEdit: function cancelEdit() {
+        this.editMode = false;
+        this.id = '';
+        this.name = '';
+        this.slug = '';
+      },
+      updateTag: function updateTag() {
+        var _this12 = this;
+
+        this.$http({
+          url: '/dashboard/tags/' + this.id,
+          method: 'PUT',
+          data: {
+            name: this.name,
+            slug: this.slug,
+            _token: this.token
+          }
+        }).then(function (data) {
+          swal({
+            title: "Success!",
+            text: _this12.name + ' Successfully Updated',
+            type: "success",
+            showCancelButton: false,
+            confirmButtonText: 'Close'
+          }, function (isConfirm) {
+            if (isConfirm) {
+              _this12.exitAlertReload();
+            }
+          });
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      exitAlertReload: function exitAlertReload() {
+        swal.close();
+        setTimeout(function () {
+          window.location.reload();
+        }, 250);
+      }
+    }
+  });
+}
+
+if (document.getElementById('categoryManagement')) {
+  var addCategoryForm = new _vue2.default({
+    el: '#categoryManagement',
+    data: {
+      id: '',
+      name: '',
+      slug: '',
+      token: '',
+      parent: '0',
+      description: '',
+      categories: [],
+      editMode: false
+
+    },
+    ready: function ready() {
+      this.initTable();
+      this.getCategories();
+    },
+
+    methods: {
+      initTable: function initTable() {
+        var categoriesTable = $("#categories-table").dataTable({
+          dom: "<'row am-datatable-header'<'col-sm-6'l><'col-sm-6'f>>" + "<'row am-datatable-body'<'col-sm-12'tr>>" + "<'row am-datatable-footer'<'col-sm-5'i><'col-sm-7'p>>",
+          "language": {
+            "zeroRecords": "There are no categories."
+          }
+        });
+      },
+      createCategory: function createCategory() {
+        var _this13 = this;
+
+        var category = { name: this.name, slug: this.slug };
+        this.categories.push(category);
         this.$http({
           url: '/dashboard/categories',
           method: 'POST',
           data: {
-            _token: this.token,
-            name: this.category
+            name: this.name,
+            slug: this.slug,
+            description: this.description,
+            parent: this.parent,
+            _token: this.token
           }
         }).then(function (data) {
-          _this2.categories = [];
-          _this2.getCategories();
-          _this2.category = '';
+          swal({
+            title: "Success!",
+            text: _this13.name + ' Successfully Added.',
+            type: "success",
+            showCancelButton: false,
+            confirmButtonText: 'Close'
+          }, function (isConfirm) {
+            if (isConfirm) {
+              _this13.exitAlertReload();
+            }
+          });
         }, function (reponse) {
-          console.log(response);
           // Handle the error
         });
-      }
-    },
-    deleteCategory: function deleteCategory(e) {
-      var _this3 = this;
+      },
+      getCategories: function getCategories() {
+        var _this14 = this;
 
-      var id = e.target.id;
-      this.$http({
-        url: '/dashboard/categories/' + id,
-        method: 'DELETE',
-        data: {
-          _token: this.token
-        }
-      }).then(function (data) {
-        _this3.categories = [];
-        _this3.getCategories();
-      }, function (reponse) {
-        // Handle the error
-      });
-    },
-    createPost: function createPost() {
-      var _this4 = this;
-
-      var content = $('#summernote').code();
-      var image = $('#image').val();
-      var author = $('#author').val();
-      this.$http({
-        url: '/dashboard/posts',
-        method: 'POST',
-        data: {
-          title: this.title,
-          slug: this.slug,
-          content: content,
-          image: image,
-          _token: this.token,
-          author: author,
-          categories: this.selectedCategories
-        }
-      }).then(function (data) {
-        _this4.clearInputs();
-        _this4.createPostSuccess();
-      }, function (reponse) {
-        // Handle the error
-      });
-    },
-    createPostSuccess: function createPostSuccess() {
-      swal({
-        title: "Post Created",
-        text: "You created a post.",
-        type: "success",
-        showCancelButton: true,
-        cancelButtonText: 'Return to Posts',
-        confirmButtonText: 'Write Another Post'
-      }, function (isConfirm) {
-        if (isConfirm) {
-          // Do Nothing
-        } else {
-            window.location = '/dashboard/posts';
+        this.$http({
+          url: '/dashboard/categories/all',
+          method: 'GET'
+        }).then(function (data) {
+          var cats = data.data;
+          for (var i = 0; i < cats.length; i++) {
+            var category = {
+              id: cats[i].id,
+              name: cats[i].name
+            };
+            _this14.categories.push(category);
           }
-      });
-    },
-    clearInputs: function clearInputs() {
-      this.title = '';
-      this.slug = '';
-      this.category = '';
-      this.categories = [];
-      this.selectedCategories = [];
-      var content = $('#summernote').code('');
-      var image = $('#image').val('');
-    },
-    titleToSlug: function titleToSlug() {
-      if (!this.slug) {
-        var slug = this.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-        this.slug = slug;
-      }
-    },
-    slugToSlug: function slugToSlug() {
-      this.slug = this.slug.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-    }
-  },
-  computed: {
-    categoryEmpty: function categoryEmpty() {
-      if (!this.category) {
-        return true;
-      }
-      return false;
-    }
-  }
-});
-var table = $("#tags-table").dataTable({
-  dom: "<'row am-datatable-header'<'col-sm-6'l><'col-sm-6'f>>" + "<'row am-datatable-body'<'col-sm-12'tr>>" + "<'row am-datatable-footer'<'col-sm-5'i><'col-sm-7'p>>",
-  "language": {
-    "zeroRecords": "There are no tags."
-  }
-});
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      nameToSlug: function nameToSlug() {
+        if (!this.slug) {
+          var slug = this.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+          this.slug = slug;
+        }
+      },
+      slugToSlug: function slugToSlug() {
+        this.slug = this.slug.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+      },
+      deleteCategory: function deleteCategory(category) {
+        var _this15 = this;
 
-var addTagForm = new _vue2.default({
-  el: '#addTag',
-  data: {
-    name: '',
-    slug: '',
-    token: '',
-    tags: []
+        this.$http({
+          url: '/dashboard/categories/' + category,
+          method: 'DELETE',
+          data: {
+            _token: this.token
+          }
+        }).then(function (data) {
+          _this15.exitAlertReload();
+        }, function (reponse) {
+          swal({
+            title: "Error",
+            text: response,
+            type: "error",
+            showCancelButton: false,
+            confirmButtonText: 'Okay'
+          });
+        });
+      },
+      confirmDeleteCategory: function confirmDeleteCategory(e) {
+        var _this16 = this;
 
-  },
-  ready: function ready() {
-    this.initTable();
-  },
+        var category = e.target.id;
+        swal({
+          title: "Are you sure?",
+          text: "You are about to delete this category. Please Confirm.",
+          type: "warning",
+          showCancelButton: true,
+          cancelButtonText: 'Cancel',
+          confirmButtonText: 'Delete Category'
+        }, function (isConfirm) {
+          if (isConfirm) {
+            _this16.deleteTag(category);
+          } else {}
+        });
+      },
+      editCategory: function editCategory(e) {
+        var _this17 = this;
 
-  methods: {
-    initTable: function initTable() {},
-    createTag: function createTag() {
-      var tag = { name: this.name };
-      this.tags.push(tag);
-      // this.$http({
-      //   url: '/dashboard/tags',
-      //   method: 'POST',
-      //   data:{
-      //     name: this.name,
-      //     slug: this.slug,
-      //     _token: this.token,
-      //   }
-      // }).then((data) =>{
-      //   this.getTags();
-      //   this.name = '';
-      //   this.slug = '';
-      //   table.destroy();
-      //   this.initTable();
-      // }, (reponse) => {
-      //   // Handle the error
-      // });
-    },
-    getTags: function getTags() {
-      this.$http({
-        url: '/dashboard/tags/allTags',
-        method: 'GET',
-        data: {}
-      }).then(function (data) {
-        console.log(data.length);
-      }, function (reponse) {
-        // Handle the error
-      });
-    },
-    nameToSlug: function nameToSlug() {
-      if (!this.slug) {
-        var slug = this.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-        this.slug = slug;
+        console.log(e.target.id);
+        this.editMode = true;
+        this.$http({
+          url: '/dashboard/categories/' + e.target.id,
+          method: 'GET',
+          data: {}
+        }).then(function (data) {
+          _this17.id = data.data.id;
+          _this17.name = data.data.name;
+          _this17.description = data.data.description;
+          _this17.parent = data.data.parent;
+          _this17.slug = data.data.slug;
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      cancelEdit: function cancelEdit() {
+        this.editMode = false;
+        this.id = '';
+        this.name = '';
+        this.slug = '';
+        this.parent = 0;
+        this.description = '';
+      },
+      updateCategory: function updateCategory() {
+        var _this18 = this;
+
+        this.$http({
+          url: '/dashboard/categories/' + this.id,
+          method: 'PUT',
+          data: {
+            name: this.name,
+            slug: this.slug,
+            parent: this.parent,
+            description: this.description,
+            _token: this.token
+          }
+        }).then(function (data) {
+          swal({
+            title: "Success!",
+            text: _this18.name + ' Successfully Updated',
+            type: "success",
+            showCancelButton: false,
+            confirmButtonText: 'Close'
+          }, function (isConfirm) {
+            if (isConfirm) {
+              _this18.exitAlertReload();
+            }
+          });
+        }, function (reponse) {
+          // Handle the error
+        });
+      },
+      exitAlertReload: function exitAlertReload() {
+        swal.close();
+        setTimeout(function () {
+          window.location.reload();
+        }, 250);
       }
-    },
-    slugToSlug: function slugToSlug() {
-      this.slug = this.slug.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '');
     }
-  }
-});
+  });
+}
 
 },{"vue":26,"vue-resource":15}]},{},[27]);
 

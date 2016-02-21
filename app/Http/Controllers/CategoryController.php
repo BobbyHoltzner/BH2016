@@ -13,12 +13,18 @@ class CategoryController extends Controller
 {
     public function index()
     {
-      return Category::all();
+      $categories = Category::all();
+      return view('cms.categories.index', compact('categories'));
     }
 
-    public function show(Category $category)
+    public function show($id)
     {
-      return Category::find($category);
+      return Category::findOrFail($id);
+    }
+
+    public function all()
+    {
+      return Category::all();
     }
 
     public function store(Request $request)
@@ -27,6 +33,7 @@ class CategoryController extends Controller
         'name'   => $request->name,
         'parent' => 0,
         'slug'   => toSlug($request->name),
+        'description' => $request->description,
       ]);
     }
 
@@ -34,5 +41,14 @@ class CategoryController extends Controller
     {
       $post = Category::find($id);
       $post->delete();
+    }
+    public function update(Request $request, $id)
+    {
+      $category = Category::findOrFail($id);
+      $category ->name = $request->name;
+      $category ->slug = $request->slug;
+      $category->parent = $request->parent;
+      $category->description = $request->description;
+      $category ->save();
     }
 }

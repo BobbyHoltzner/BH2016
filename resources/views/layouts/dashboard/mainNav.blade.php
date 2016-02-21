@@ -8,7 +8,7 @@
           <span>Home</span>
         </a>
       </li>
-      <li class="parent {{setActive('dashboard/posts')}}">
+      <li class="parent {{setActive(['dashboard/posts', 'dashboard/categories', 'dashboard/tags', 'dashboard/posts/create'])}}">
         <a href="/dashboard/posts">
           <i class="icon s7-pin"></i>
           <span>Posts</span>
@@ -32,6 +32,12 @@
         <a href="#">
           <i class="icon s7-copy-file"></i>
           <span>Pages</span>
+        </a>
+      </li>
+      <li class="parent {{setActive('dashboard/settings')}}">
+        <a href="/dashboard/settings">
+          <i class="icon s7-tools"></i>
+          <span>Settings</span>
         </a>
       </li>
     </ul>
