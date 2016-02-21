@@ -16,6 +16,11 @@ var App = (function () {
         "zeroRecords": "There are no posts that match those terms."
       },
     });
+    // $("#tags-table").dataTable({
+    //   "language": {
+    //     "zeroRecords": "There are no tags."
+    //   },
+    // });
 
     //Remove search & paging dropdown
     $("#table2").dataTable({

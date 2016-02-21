@@ -27,6 +27,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('posts', 'PostController');
     Route::post('image', 'PostController@uploadImage');
     Route::resource('categories', 'CategoryController');
+    Route::get('allCategories', 'CategoryController@all');
+        Route::get('tags/allTags', 'TagController@all');
+    Route::resource('tags', 'TagController');
   });
 
 });

@@ -131,4 +131,75 @@ var CreatePostForm = new Vue({
       return false;
     }
   }
-})
+});
+var table = $("#tags-table").dataTable({
+  dom:
+    "<'row am-datatable-header'<'col-sm-6'l><'col-sm-6'f>>" +
+    "<'row am-datatable-body'<'col-sm-12'tr>>" +
+    "<'row am-datatable-footer'<'col-sm-5'i><'col-sm-7'p>>",
+  "language": {
+    "zeroRecords": "There are no tags."
+  },
+});
+
+var addTagForm = new Vue({
+  el: '#addTag',
+  data:{
+    name: '',
+    slug: '',
+    token: '',
+    tags: [],
+
+  },
+  ready(){
+    this.initTable();
+  },
+  methods:{
+    initTable(){
+
+    },
+    createTag(){
+      var tag = {name: this.name};
+      this.tags.push(tag);
+      // this.$http({
+      //   url: '/dashboard/tags',
+      //   method: 'POST',
+      //   data:{
+      //     name: this.name,
+      //     slug: this.slug,
+      //     _token: this.token,
+      //   }
+      // }).then((data) =>{
+      //   this.getTags();
+      //   this.name = '';
+      //   this.slug = '';
+      //   table.destroy();
+      //   this.initTable();
+      // }, (reponse) => {
+      //   // Handle the error
+      // });
+    },
+    getTags(){
+      this.$http({
+        url: '/dashboard/tags/allTags',
+        method: 'GET',
+        data:{
+
+        }
+      }).then((data) =>{
+        console.log(data.length)
+      }, (reponse) => {
+        // Handle the error
+      });
+    },
+    nameToSlug(){
+      if(!this.slug){
+        var slug = this.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+        this.slug = slug;
+      }
+    },
+    slugToSlug(){
+      this.slug = this.slug.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+    }
+  },
+});

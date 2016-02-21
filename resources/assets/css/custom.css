@@ -33,6 +33,69 @@
      background-color: #dbdbdb;
    }
 
+ /* ==========================================================================
+    Common Dashboard Elements
+    ========================================================================== */
+
+    .am-left-sidebar .sidebar-elements > li > ul{
+      position: absolute;
+      z-index: 9999;
+      list-style: none!important;
+      height: auto;
+      top:25%;
+      width:200px;
+    }
+    .am-left-sidebar .sidebar-elements li.parent{
+      position: relative;
+    }
+    .am-left-sidebar .sidebar-elements > li > ul > li.title{
+      display: none;
+    }
+    .am-left-sidebar .sidebar-elements > li > ul > li{
+      display: none;
+      min-height: 40px;
+    }
+    .nano{
+      overflow:visible;
+    }
+    .nano > .nano-content{
+      overflow: visible;
+    }
+    .content.nano-content{
+      right:0!important;
+    }
+    .nano-content ul li{
+      list-style: none;
+      min-height: 40px;
+    }
+    .am-left-sidebar .sidebar-elements > li > ul.sub .nano-content ul{
+      background-color: #484747;
+      padding:15px 0px;
+    }
+    .am-left-sidebar .sidebar-elements > li > ul > .nav-items .am-scroller .content{
+      padding-top:5px!important;
+    }
+    .am-left-sidebar li.parent:hover:after {
+      content: '\f0d9';
+      font-family: FontAwesome;
+      position: absolute;
+      color: #484747;
+      right:0;
+      top:0;
+      bottom:0;
+      margin: auto;
+      height:20px;
+      font-size:20px;
+    }
+    .nano-pane{
+      display: none!important;
+    }
+    .am-left-sidebar .sidebar-elements > li > ul > .nav-items .am-scroller .content > ul > li > a:hover{
+      background-color: inherit;
+      color: #ff7e00;
+    }
+
+
   /* ==========================================================================
      Create Post Page
      ========================================================================== */
@@ -131,10 +194,10 @@
           color: rgba(0, 191, 50, .6);
           transform: rotate(10deg);
         }
-        #table1_filter{
+        .dataTables_filter{
           display: flex;
           justify-content: flex-end;
         }
-        #table1_filter input{
+        .dataTables_filter input{
           margin-left: 10px;
         }
