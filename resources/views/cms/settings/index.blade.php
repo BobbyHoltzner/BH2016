@@ -7,14 +7,37 @@
     <div class="col-sm-10">
       <div class="tab-container">
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+          <li class="active"><a href="#socialAccounts" data-toggle="tab">Social Accounts</a></li>
           <li><a href="#profile" data-toggle="tab">Profile</a></li>
           <li><a href="#messages" data-toggle="tab">Messages</a></li>
         </ul>
         <div class="tab-content">
-          <div id="home" class="tab-pane active cont">
-            <p> Consectetur adipisicing elit. Ad aperiam dolore veniam mollitia consectetur aut. Cumque sunt consequatur, officiis voluptatum quas atque magnam animi eaque facere cupiditate quos ad totam saepe porro nostrum tenetur. Assumenda esse quidem, sed vel dolore quisquam fuga culpa non, ducimus, impedit fugiat vero similique recusandae?</p>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam dolore veniam mollitia consectetur aut. Cumque sunt consequatur, officiis voluptatum quas atque magnam animi eaque facere cupiditate quos ad totam saepe porro nostrum tenetur. Assumenda esse quidem, sed vel dolore quisquam fuga culpa non, ducimus, impedit fugiat vero similique recusandae?</p>
+          <div id="socialAccounts" class="tab-pane active cont">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" v-model="facebook" placeholder="Facebook">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" v-model="twitter" placeholder="Twitter">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" v-model="github" placeholder="Github">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" v-model="instagram" placeholder="Instagram">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" v-model="linkedin" placeholder="LinkedIn">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" v-model="googleplus" placeholder="Google +">
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" v-on:click="updateSettings">Update Settings <i class="icon s7-angle-right"></i></button>
+                </div>
+              </div>
+            </div>
           </div>
           <div id="profile" class="tab-pane cont">
             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima praesentium laudantium ipsa, enim maxime placeat, dolores quos sequi nisi iste velit perspiciatis rerum eveniet voluptate laboriosam perferendis ipsum. Expedita, maiores.</p>
