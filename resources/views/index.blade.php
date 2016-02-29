@@ -25,8 +25,14 @@
     <p>
       I love to discuss web development, work-flows and best business practices, when coding I specialize in the following technologies:
     </p>
+  </section>
+  <section id="logos">
     <div class="specialty-logos">
-
+      <div><img src="/images/laravel.png" alt="" /></div>
+      <div><img src="/images/react.png" alt="" /></div>
+      <div><img src="/images/vuejs.png" alt="" /></div>
+      <div><img src="/images/html5.png" alt="" /></div>
+      <div><img src="/images/wordpress.png" alt="" /></div>
     </div>
   </section>
   <section id="recentPosts">

@@ -196,7 +196,23 @@ section#about *{
 }
 section#about p{
   font-size:18px;
-  margin: 20px 0px;
+  /*margin: 20px 0px;*/
+}
+.specialty-logos{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding:20px 0px;
+}
+.specialty-logos div{
+  max-width: 20%;
+  flex:1;
+  align-items: center;
+}
+.specialty-logos div img{
+  max-width: 100%;
+  height
+  auto;
 }
 /* Recent Posts Section */
 #recentPosts{
