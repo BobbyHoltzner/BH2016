@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title><?php // TODO Echo out the title here ?></title>
+    <title>{{$post->title}}</title>
     <meta name="description" content="<?php // TODO echo out the description ?>">
     <link rel="shortcut icon" href="/images/bh-favicon.png">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
@@ -34,8 +34,10 @@
         </div>
       </nav>
     </header>
-
-    @yield('content')
+    <div class="wrapper" id="main">
+      @yield('content')
+      @include('sidebar')
+    </div>
 
     <footer>
       <div class="wrapper">
@@ -57,5 +59,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="/frontend/js/libs.js" charset="utf-8"></script>
     <script src="/frontend/js/main.js" charset="utf-8"></script>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=540253416116004";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    </script>
   </body>
 </html>

@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.internal')
 
 @section('content')
-  <div class="wrapper">
     <div class="post">
       <h1>{{$post->title}}</h1>
       <div class="categories">
@@ -13,5 +12,4 @@
       </div>
       {!! $post->content !!}
     </div>
-  </div>
 @endsection
