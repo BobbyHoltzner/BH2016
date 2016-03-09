@@ -16,6 +16,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/blog', 'PageController@blog');
+
 // Route::get('/blog', 'BlogController@index');
 // Route::get('/blog/{slug}', 'BlogController@showPost');
 Route::group(['middleware' => 'web'], function () {

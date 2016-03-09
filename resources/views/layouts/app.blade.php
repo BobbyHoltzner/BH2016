@@ -19,10 +19,10 @@
             <a href="#"><img width="200" src="images/logo.png" alt=""></a>
           </div>
           <ul class="navigation">
-            <li class="top-level"><a class="top" href="#">About</a></li>
-            <li class="top-level"><a class="top" href="#">Blog</a></li>
-            <li class="top-level"><a class="top" href="#">Projects</a></li>
-            <li class="top-level"><a class="top" href="#">Contact</a></li>
+            <li class="top-level"><a class="top" href="#about">About</a></li>
+            <li class="top-level"><a class="top" href="/blog">Blog</a></li>
+            <li class="top-level"><a class="top" href="/projects">Projects</a></li>
+            <li class="top-level"><a class="top" href="/contact">Contact</a></li>
           </ul>
           <div class="social">
             <a href="#"><span class="ion-social-facebook"></span></a>
