@@ -12,4 +12,10 @@ class PageController extends Controller
     public function blog(){
       return view('blog');
     }
+    public function projects(){
+      return view('projects');
+    }
+    public function contact(){
+      return view('contact');
+    }
 }

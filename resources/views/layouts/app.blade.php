@@ -55,6 +55,7 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js" charset="utf-8"></script>
     <script src="/frontend/js/libs.js" charset="utf-8"></script>
     <script src="/frontend/js/main.js" charset="utf-8"></script>
   </body>

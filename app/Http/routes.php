@@ -16,11 +16,16 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/blog', 'PageController@blog');
+  Route::post('/verifyCaptcha', 'FormController@captcha');
 
 // Route::get('/blog', 'BlogController@index');
 // Route::get('/blog/{slug}', 'BlogController@showPost');
 Route::group(['middleware' => 'web'], function () {
+  Route::get('/blog', 'PageController@blog');
+  Route::get('/projects', 'PageController@projects');
+  Route::get('/contact', 'PageController@contact');
+
+
   Route::auth();
 
   Route::get('/dashboard', 'DashboardController@index');
@@ -37,4 +42,3 @@ Route::group(['middleware' => 'web'], function () {
 
 });
 Route::get('/{slug}', 'PostController@show');
-// Route::get('/{slug}', 'PagesController@showPage');

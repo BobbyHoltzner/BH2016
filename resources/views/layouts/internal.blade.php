@@ -16,13 +16,13 @@
       <nav>
         <div class="wrapper">
           <div id="logoContainer">
-            <a href="#"><img width="200" src="images/logo.png" alt=""></a>
+            <a href="/"><img width="200" src="images/logo.png" alt=""></a>
           </div>
           <ul class="navigation">
-            <li class="top-level"><a class="top" href="#">About</a></li>
-            <li class="top-level"><a class="top" href="#">Blog</a></li>
-            <li class="top-level"><a class="top" href="#">Projects</a></li>
-            <li class="top-level"><a class="top" href="#">Contact</a></li>
+            <li class="top-level"><a class="top" href="/#about">About</a></li>
+            <li class="top-level"><a class="top {{setActive('blog')}}" href="/blog">Blog</a></li>
+            <li class="top-level"><a class="top {{setActive('projects')}}" href="/projects">Projects</a></li>
+            <li class="top-level"><a class="top {{setActive('contact')}}" href="/contact">Contact</a></li>
           </ul>
           <div class="social">
             <a href="#"><span class="ion-social-facebook"></span></a>
@@ -35,7 +35,9 @@
       </nav>
     </header>
     <div class="wrapper" id="main">
-      @yield('content')
+      <div class="content">
+        @yield('content')
+      </div>
       @include('sidebar')
     </div>
 
@@ -57,6 +59,8 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js" charset="utf-8"></script>
     <script src="/frontend/js/libs.js" charset="utf-8"></script>
     <script src="/frontend/js/main.js" charset="utf-8"></script>
     <div id="fb-root"></div>
@@ -70,5 +74,6 @@
     </script>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     </script>
+    @yield('scripts')
   </body>
 </html>
