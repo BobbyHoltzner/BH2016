@@ -205,7 +205,7 @@ section#about{
   margin: 0 auto;
 }
 section#about *{
-  text-align:center;
+  text-align:left;
 }
 section#about p{
   font-size:18px;
@@ -434,7 +434,7 @@ input[type="color"]:focus,
 }
 
 div.response{
-  width:50%;
+  width:75%;
   padding:15px;
 }
 div.response p{
@@ -446,6 +446,9 @@ div.response.error{
 }
 div.response.success{
   background:rgba(40, 160, 60, .75);
+}
+.btn-primary i{
+  margin-left:15px;
 }
 
 /**

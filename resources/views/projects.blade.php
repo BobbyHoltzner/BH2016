@@ -9,7 +9,7 @@
       <img src="/images/winedesign.jpg" />
     </div>
     <div class="overlay" style="display:none">
-      <a href="http://wineanddesign.com" class="btn btn-primary">View Site</a>
+      <a target="_blank" href="http://wineanddesign.com" class="btn btn-primary">View Site</a>
     </div>
   </li>
   <li>
@@ -17,7 +17,7 @@
       <img src="/images/jerrylewisroofing.jpg" />
     </div>
     <div class="overlay" style="display:none;">
-      <a href="http://jerrylewisroofing.com" class="btn btn-primary">View Site</a>
+      <a target="_blank" href="http://jerrylewisroofing.com" class="btn btn-primary">View Site</a>
     </div>
   </li>
   <li>
@@ -25,7 +25,7 @@
       <img src="/images/rex.jpg" />
     </div>
     <div class="overlay" style="display:none">
-      <a href="http://therexmd.net" class="btn btn-primary">View Site</a>
+      <a target="_blank" href="http://therexmd.net" class="btn btn-primary">View Site</a>
     </div>
   </li>
   <li>
@@ -33,7 +33,7 @@
       <img src="/images/bumblejunk.jpg" />
     </div>
     <div class="overlay" style="display:none">
-      <a href="http://bumblejunk.com" class="btn btn-primary">View Site</a>
+      <a target="_blank" href="http://bumblejunk.com" class="btn btn-primary">View Site</a>
     </div>
   </li>
 </ul>

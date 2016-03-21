@@ -17,10 +17,11 @@ Route::get('/', function () {
 });
 
   Route::post('/verifyCaptcha', 'FormController@captcha');
+  Route::resource('/formSubmission', 'FormController');
 
 // Route::get('/blog', 'BlogController@index');
 // Route::get('/blog/{slug}', 'BlogController@showPost');
-Route::group(['middleware' => 'web'], function () {
+  Route::group(['middleware' => 'web'], function () {
   Route::get('/blog', 'PageController@blog');
   Route::get('/projects', 'PageController@projects');
   Route::get('/contact', 'PageController@contact');

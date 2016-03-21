@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>@yield('title')</title>
     <meta name="description" content="<?php // TODO echo out the description ?>">
     <link rel="shortcut icon" href="/images/bh-favicon.png">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
